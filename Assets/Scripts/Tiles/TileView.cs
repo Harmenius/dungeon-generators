@@ -25,9 +25,10 @@ public enum TileType
 public class TileView : MonoBehaviour
 {
     [SerializeField] Tilemap level;
-    [SerializeField] Tile[] palette;
     [SerializeField] Vector2Int topLeft;
+    [SerializeField] String paletteName;
 
+    Tile[] palette;
     RectInt bounds;
     TileModel model;
 
@@ -40,7 +41,7 @@ public class TileView : MonoBehaviour
 
     private void InitializePalette()
     {
-        Sprite[] paletteSprites = Resources.LoadAll<Sprite>("Tiles/FungiFarmer");
+        Sprite[] paletteSprites = Resources.LoadAll<Sprite>("Tiles/" + paletteName);
         palette = new Tile[paletteSprites.Length];
         for (int i = 0; i < paletteSprites.Length; i++)
         {
